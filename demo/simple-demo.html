@@ -9,18 +9,19 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+
+
+<link rel="stylesheet" href="../css/ui-product-preview.css">
   
-<script src="../js/lib/angular.min.js"></script>
-<script src="../js/ui.product-gallery.js"></script>
+<script src="../lib/angular.min.js"></script>
 
-<style type="text/css">
-  a.cloud-zoom {
-    display: flex;
-    width: 300px;
-    height: 300px;
-  }
+    <!-- Main script file -->
+<script src="../build/ui-product-preview.js"></script>
 
-</style>
+    <!-- model file -->
+<script src="../src/uiThumbnailEntity.js"></script>
+
+
   
 </head>
 <body ng-app="uiProductPreviewDemo">
@@ -42,18 +43,18 @@
   app.controller('ControllerDemo', function($scope){
   	$scope.images = [];
 
-  			var thumb1 = new ThumbnailImage();
-          thumb1.thumbnailSrc = 'images/img-1.jpg';
+  			var thumb1 = new UiThumbnail();
+          thumb1.smallSrc = 'images/img-1.jpg';
           thumb1.mediumSrc = 'images/img-1.jpg';
           thumb1.bigSrc = 'images/img-1.jpg';
 
-          var thumb2 = new ThumbnailImage();
-          thumb2.thumbnailSrc = 'images/img-2.jpg';
+          var thumb2 = new UiThumbnail();
+          thumb2.smallSrc = 'images/img-2.jpg';
           thumb2.mediumSrc = 'images/img-2.jpg';
           thumb2.bigSrc = 'images/img-2.jpg';
 
-          var thumb3 = new ThumbnailImage();
-          thumb3.thumbnailSrc = 'images/img-3.jpg';
+          var thumb3 = new UiThumbnail();
+          thumb3.smallSrc = 'images/img-3.jpg';
           thumb3.mediumSrc = 'images/img-3.jpg';
           thumb3.bigSrc = 'images/img-3.jpg';
 
