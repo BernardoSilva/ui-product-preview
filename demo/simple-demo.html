@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <title>My HTML File</title>
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+  
+<script src="../js/lib/angular.min.js"></script>
+<script src="../js/ui.product-gallery.js"></script>
+
+<style type="text/css">
+  a.cloud-zoom {
+    display: flex;
+    width: 300px;
+    height: 300px;
+  }
+
+</style>
+  
+</head>
+<body ng-app="uiProductPreviewDemo">
+
+<h1>Product Preview directive</h1>
+<div ng-controller="ControllerDemo">
+	
+      <ui-product-preview images="images"></ui-product-preview>
+
+</div>
+	
+
+
+<script type="text/javascript">
+	
+
+  var app = angular.module('uiProductPreviewDemo', ['ui.product-preview']);
+ 
+  app.controller('ControllerDemo', function($scope){
+  	$scope.images = [];
+
+  			var thumb1 = new ThumbnailImage();
+          thumb1.thumbnailSrc = 'images/img-1.jpg';
+          thumb1.mediumSrc = 'images/img-1.jpg';
+          thumb1.bigSrc = 'images/img-1.jpg';
+
+          var thumb2 = new ThumbnailImage();
+          thumb2.thumbnailSrc = 'images/img-2.jpg';
+          thumb2.mediumSrc = 'images/img-2.jpg';
+          thumb2.bigSrc = 'images/img-2.jpg';
+
+          var thumb3 = new ThumbnailImage();
+          thumb3.thumbnailSrc = 'images/img-3.jpg';
+          thumb3.mediumSrc = 'images/img-3.jpg';
+          thumb3.bigSrc = 'images/img-3.jpg';
+
+          $scope.images.push(thumb1);
+          $scope.images.push(thumb2);
+          $scope.images.push(thumb3);
+  });
+
+
+</script>
+
+</body>
+</html>
