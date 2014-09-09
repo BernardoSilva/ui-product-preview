@@ -8,10 +8,11 @@ mod.directive('directiveProductPreviewThumbnail', function () {
         transcend: true,
         require: '^directiveProductPreview',
         templateUrl: 'tpl/preview-thumbnail.html',
-        link: function (scope, elem, attrs, controllerInstance) {
-            scope.selectImage = function () {
-                controllerInstance.updatePreview(scope.thumbnail);
+        controller: function ($scope) {
+            $scope.selectImage = function () {
+                $scope.$parent.updatePreview($scope.thumbnail);
             };
-        }
+        },
+        replace: true
     };
 });
