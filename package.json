@@ -1,24 +1,27 @@
 {
-    "name": "ui-product-preview",
-    "version": "0.1.0",
-    "scripts": {
-        "test": "node_modules/karma/bin/karma start --single-run --no-auto-watch",
-        "dev": "node_modules/karma/bin/karma start --browsers=PhantomJS --reporters=dots"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/BernardoSilva/ui-product-preview.git"
-    },
-    "author": "Bernardo Silva",
-    "license": "GPL2",
-    "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-cli": "^0.1.13",
-        "grunt-contrib-concat": "^0.5.0",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-contrib-uglify": "^0.5.1",
-        "jshint-stylish": "^0.4.0",
-        "karma": "~0.10",
-        "karma-phantomjs-launcher": "^0.1.4"
-    }
+  "name": "ui-product-preview",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start --single-run --no-auto-watch",
+    "dev": "node_modules/karma/bin/karma start --browsers=PhantomJS --reporters=dots"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BernardoSilva/ui-product-preview.git"
+  },
+  "author": "Bernardo Silva",
+  "license": "GPL2",
+  "devDependencies": {
+    "grunt": "0.4.0",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-concat": "0.5.0",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-uglify": "0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "0.4.0",
+    "karma": "0.10",
+    "karma-jasmine": "0.1.5",
+    "karma-ng-html2js-preprocessor": "0.1.0",
+    "karma-phantomjs-launcher": "0.1.4"
+  }
 }

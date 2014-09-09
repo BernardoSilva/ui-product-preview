@@ -8,12 +8,12 @@ var mod = angular.module('ui-product-preview', []);
 /**
  * The main product preview directive is here.
  */
-mod.directive('uiProductPreview', function () {
+mod.directive('directiveProductPreview', function () {
     return {
         scope: {images: '='},
         restrict: 'AE',
         replace: true,
-        templateUrl: '../src/template/gallery-tpl.html',
+        templateUrl: 'tpl/preview.html',
         controller: function ($scope, $compile, $http) {
             $scope.thumbnails = [];
 
@@ -23,7 +23,10 @@ mod.directive('uiProductPreview', function () {
 
             var init = function () {
                 // Push the parent images into scope.
-                $scope.thumbnails = $scope.images;
+                if($scope.images) {
+                    $scope.thumbnails = $scope.images;
+                }
+
 
 
                 if ($scope.thumbnails.length > 0) {
@@ -43,13 +46,13 @@ mod.directive('uiProductPreview', function () {
 /**
  * This is the thumbnail directive that adds behaviour to thumbnail elements.
  */
-mod.directive('uiProductPreviewThumbnail', function () {
+mod.directive('directiveProductPreviewThumbnail', function () {
     return {
         scope: {thumbnail: "="},
         restrict: 'AE',
         transcend: true,
-        require: '^uiProductPreview',
-        templateUrl: '../src/template/gallery-tpl-thumbnail.html',
+        require: '^directiveProductPreview',
+        templateUrl: 'tpl/preview-thumbnail.html',
         link: function (scope, elem, attrs, controllerInstance) {
             scope.selectImage = function () {
                 controllerInstance.updatePreview(scope.thumbnail);

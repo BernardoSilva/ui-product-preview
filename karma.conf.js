@@ -12,6 +12,11 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+      // preprocess matching files before serving them to the browser
+      // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+
+
+
 
     // list of files / patterns to load in the browser
     files: [
@@ -25,19 +30,31 @@ module.exports = function(config) {
         'src/uiProductPreviewDirective.js',
         'src/uiProductPreviewThumbnailDirective.js',
         // Test files.
-        'tests/*Spec.js'
+        'tests/*Spec.js',
+
+        'tpl/*.html'
     ],
 
+    ngHtml2JsPreprocessor: {
+//        stripPrefix: 'src'
+//            prependPrefix: 'served/'
+    },
+
+      preprocessors: {
+          // Generate js files from HTML templates.
+          'tpl/*.html': ['ng-html2js']
+      },
 
     // list of files to exclude
     exclude: [
     ],
 
+    plugins: [
+        'karma-jasmine',
+        'karma-ng-html2js-preprocessor',
+        'karma-phantomjs-launcher'
+    ],
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
 
 
     // test results reporter to use

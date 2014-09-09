@@ -3,12 +3,12 @@
 /**
  * The main product preview directive is here.
  */
-mod.directive('uiProductPreview', function () {
+mod.directive('directiveProductPreview', function () {
     return {
         scope: {images: '='},
         restrict: 'AE',
         replace: true,
-        templateUrl: '../src/template/gallery-tpl.html',
+        templateUrl: 'tpl/preview.html',
         controller: function ($scope, $compile, $http) {
             $scope.thumbnails = [];
 
@@ -18,7 +18,10 @@ mod.directive('uiProductPreview', function () {
 
             var init = function () {
                 // Push the parent images into scope.
-                $scope.thumbnails = $scope.images;
+                if($scope.images) {
+                    $scope.thumbnails = $scope.images;
+                }
+
 
 
                 if ($scope.thumbnails.length > 0) {
