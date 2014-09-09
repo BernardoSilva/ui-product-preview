@@ -14,6 +14,23 @@ mod.directive('directiveProductPreview', function () {
         restrict: 'AE',
         replace: true,
         templateUrl: 'tpl/preview.html',
+//        template: '<div class="benny-gallery-container">'+
+//            '<div class="row">'+
+//        '<div class="col-md-12">'+
+//            '<div class="col-md-6">'+
+//                '<a class="cloud-zoom" href="{{ previewSrc }}" id="zoom1" rel="adjustX: 10, adjustY:-4">'+
+//                    '<img ng-src="{{previewSrc}}" alt="" />'+
+//                '</a>'+
+//                '<div class="row">'+
+//
+//                '</div>'+
+//            '</div>'+
+//            '<div class="col-md-6">'+
+//            'zoom here!'+
+//            '</div>'+
+//        '</div>'+
+//        '</div>'+
+//    '</div>',
         controller: function ($scope, $compile, $http) {
             $scope.thumbnails = [];
 

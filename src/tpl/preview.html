@@ -1,0 +1,17 @@
+<div class="benny-gallery-container">
+    <div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <a class="cloud-zoom" href="{{ previewSrc }}" id="zoom1" rel="adjustX: 10, adjustY:-4">
+                <img ng-src="{{previewSrc}}" alt="" />
+            </a>
+            <div class="row">
+                <directive-product-preview-thumbnail ng-repeat="thumbnail in thumbnails" thumbnail="thumbnail"></directive-product-preview-thumbnail>
+            </div>
+        </div>
+        <div class="col-md-6">
+            zoom here!
+        </div>    
+    </div>
+    </div>
+</div>

@@ -26,23 +26,23 @@ module.exports = function(config) {
 
         // Script files
         'src/uiThumbnailEntity.js',
-        'src/module.js',
-        'src/uiProductPreviewDirective.js',
-        'src/uiProductPreviewThumbnailDirective.js',
+        'build/ui-product-preview.min.js',
+
+        'src/tpl/*.html',
         // Test files.
         'tests/*Spec.js',
 
-        'tpl/*.html'
+
     ],
 
     ngHtml2JsPreprocessor: {
-//        stripPrefix: 'src'
+        stripPrefix: 'src/'
 //            prependPrefix: 'served/'
     },
 
       preprocessors: {
           // Generate js files from HTML templates.
-          'tpl/*.html': ['ng-html2js']
+          'src/tpl/*.html': ['ng-html2js']
       },
 
     // list of files to exclude

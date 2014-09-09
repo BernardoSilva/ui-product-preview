@@ -3,8 +3,8 @@ describe('Gallery', function(){
 
     beforeEach(function(){
         angular.module("ui-product-preview");
-        module('tpl/preview.html');
-        module('tpl/preview-thumbnail.html');
+//        module('tpl/preview.html');
+//        module('tpl/preview-thumbnail.html');
     });
 
 
@@ -22,12 +22,14 @@ describe('Gallery', function(){
         // Compile a piece of HTML containing the directive
         $rootScope = $rootScope.$new();
         element = angular.element('<directive-product-preview></directive-product-preview>');
+        console.log(element);
         $compile(element)($rootScope);
+        console.log(element);
 
         // fire all the watches, so the scope expression {{1 + 1}} will be evaluated
         $rootScope.$digest();
         // Check that the compiled element contains the templated content
-        expect(element.html()).toContain("xx");
+        expect(element['length']).toContain("xx");
     });
 
 
