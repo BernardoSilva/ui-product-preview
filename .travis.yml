@@ -7,3 +7,15 @@ node_js:
 # Use Travis' new container-based infrastructure.
 # See http://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo: false
+
+# Ignore gh-pages branch.
+branches:
+  except:
+    - gh-pages
+
+# Run the tests.
+script:
+  - npm test
+
+# Send reports.
+after_script: npm run-script coveralls

@@ -44,7 +44,8 @@ module.exports = function(config) {
 
       preprocessors: {
           // Generate js files from HTML templates.
-          'src/tpl/*.html': ['ng-html2js']
+          'src/tpl/*.html': ['ng-html2js'],
+          'src/*.js': ['coverage']
       },
 
     // list of files to exclude
@@ -54,7 +55,8 @@ module.exports = function(config) {
     plugins: [
         'karma-jasmine',
         'karma-ng-html2js-preprocessor',
-        'karma-phantomjs-launcher'
+        'karma-phantomjs-launcher',
+        'karma-coverage'
     ],
 
 
@@ -62,8 +64,24 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage', 'dots'],
 
+    coverageReporter: {
+      // specify a common output directory
+      dir: 'build/reports/coverage',
+      reporters: [
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        // reporters supporting the `file` property, use `subdir` to directly
+        // output them in the `dir` directory
+        { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' },
+        { type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+        { type: 'text', subdir: '.', file: 'text.txt' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
+      ]
+    },
 
     // web server port
     port: 9876,
