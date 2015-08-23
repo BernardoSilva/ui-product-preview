@@ -6,6 +6,20 @@ angular.module('ui-product-preview').controller('productPreviewController', func
         $scope.selected = thumbnail;
         $scope.previewSrc = thumbnail.smallSrc;
     };
+
+    /**
+     * Function to contain the init logic.
+     * Set the first image as the preview image.
+     */
+    var init = function() {
+      if (angular.isDefined($scope.thumbnails) && $scope.thumbnails.length > 0) {
+          $scope.selected = $scope.thumbnails[0];
+          $scope.previewSrc = $scope.selected.smallSrc;
+      }
+    };
+
+    // Init the controller logic.
+    init();
 });
 
 /**
@@ -17,13 +31,6 @@ angular.module('ui-product-preview').directive('productPreview', function () {
         restrict: 'AE',
         replace: true,
         templateUrl: 'tpl/preview.html',
-        link: function (scope) {
-            if (scope.thumbnails) {
-                scope.previewSrc = scope.thumbnails[0].smallSrc;
-            } else {
-                scope.previewSrc = 'images/demo-medium.png';
-            }
-        },
         controller: 'productPreviewController'
     };
 });

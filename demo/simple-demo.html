@@ -28,19 +28,18 @@
 
 <h1>Product Preview directive</h1>
 <div ng-controller="ControllerDemo">
-
       <product-preview images="images"></product-preview>
-
 </div>
 
 
 
 <script type="text/javascript">
 
+  // Declare your application name.
+  // Add `ui-product-preview` as dependency for your applicaiton.
+  angular.module('myApp', ['ui-product-preview']);
 
-  var app = angular.module('uiProductPreviewDemo', ['ui-product-preview']);
-
-  app.controller('ControllerDemo', function($scope){
+  angular.module('myApp').controller('ControllerDemo', function($scope){
   	$scope.images = [];
 
   			var thumb1 = new UiThumbnail();
