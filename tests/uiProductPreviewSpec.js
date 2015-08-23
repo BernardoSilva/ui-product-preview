@@ -1,5 +1,5 @@
-
-describe('Gallery directive', function () {
+/* globals UiThumbnail */
+describe('Product Preview Directive', function () {
     var $rootScope, $compile, element, $controller, controller;
 
     beforeEach(function () {
@@ -19,7 +19,7 @@ describe('Gallery directive', function () {
     }));
 
 
-    it('Replaces the element with the appropriate content', function () {
+    it('Should replace the element with the appropriate content', function () {
         // Compile a piece of HTML containing the directive
         element = $compile('<product-preview></product-preview>')($rootScope);
         $rootScope.$digest();
@@ -27,12 +27,55 @@ describe('Gallery directive', function () {
         expect(element.html()).toContain('cloud-zoom');
     });
 
-    it('Should have an updatePreview function', function(){
-        var $scope = {};
-        /*exported controller */
-        controller = $controller('productPreviewController', {$scope: $scope});
+    describe('Controller should ', function(){
+        describe('have an updatePreview function that', function(){
+            it('is present', function(){
+              var $scope = {};
 
-        expect(typeof $scope.updatePreview).toBe('function');
+              controller = $controller('productPreviewController', {$scope: $scope});
+
+              expect(typeof $scope.updatePreview).toBe('function');
+            });
+
+            it('updates the selected image', function() {
+              var $scope = {
+                selected: 'my-image.jpg'
+              };
+              
+              controller = $controller('productPreviewController', {$scope: $scope});
+              expect($scope.selected).toBe('my-image.jpg');
+              var newThumbnail = new UiThumbnail({smallSrc: 'new-image.png'});
+              $scope.updatePreview(newThumbnail);
+              expect($scope.selected instanceof UiThumbnail).toBe(true);
+              expect($scope.selected.smallSrc).toBe('new-image.png');
+            });
+
+        });
+        it('set selected object and previewSrc variables in scope', function(){
+            var thumbnail1, $scope;
+            thumbnail1 = {smallSrc:'small-img1.png', mediumSrc: 'medium-img1.png', bigSrc: 'big-img1.png'};
+            $scope = {
+              thumbnails: [
+                thumbnail1
+              ]
+            };
+            controller = $controller('productPreviewController', {$scope: $scope});
+
+            expect($scope.selected).toMatch(thumbnail1);
+        });
+
+        it('set the previewSrc with smallSrc image from selected object', function(){
+            var thumbnail1, $scope;
+            thumbnail1 = {smallSrc:'small-img1.png', mediumSrc: 'medium-img1.png', bigSrc: 'big-img1.png'};
+            $scope = {
+              thumbnails: [
+                thumbnail1
+              ]
+            };
+            controller = $controller('productPreviewController', {$scope: $scope});
+            expect($scope.previewSrc).toMatch(thumbnail1.smallSrc);
+        });
     });
+
 
 });
