@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
-  
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 
@@ -12,7 +12,7 @@
 
 
 <link rel="stylesheet" href="../css/ui-product-preview.css">
-  
+
 <script src="../lib/angular.min.js"></script>
 
     <!-- Main script file -->
@@ -22,24 +22,24 @@
 <script src="../src/uiThumbnailEntity.js"></script>
 
 
-  
+
 </head>
 <body ng-app="uiProductPreviewDemo">
 
 <h1>Product Preview directive</h1>
 <div ng-controller="ControllerDemo">
-	
-      <directive-product-preview images="images"></directive-product-preview>
+
+      <product-preview images="images"></product-preview>
 
 </div>
-	
+
 
 
 <script type="text/javascript">
-	
+
 
   var app = angular.module('uiProductPreviewDemo', ['ui-product-preview']);
- 
+
   app.controller('ControllerDemo', function($scope){
   	$scope.images = [];
 

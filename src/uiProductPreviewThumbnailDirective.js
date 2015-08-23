@@ -1,18 +1,23 @@
 /**
  * This is the thumbnail directive that adds behaviour to thumbnail elements.
  */
-mod.directive('directiveProductPreviewThumbnail', function () {
+angular.module('ui-product-preview').controller('productPreviewThumbnailController',
+    function ($scope) {
+        $scope.selectImage = function () {
+            $scope.$parent.updatePreview($scope.thumbnail);
+        };
+    }
+);
+
+
+angular.module('ui-product-preview').directive('productPreviewThumbnail', function () {
     return {
-        scope: {thumbnail: "="},
+        scope: {thumbnail: '='},
         restrict: 'AE',
         transcend: true,
-        require: '^directiveProductPreview',
+        require: '^productPreview',
         templateUrl: 'tpl/preview-thumbnail.html',
-        controller: function ($scope) {
-            $scope.selectImage = function () {
-                $scope.$parent.updatePreview($scope.thumbnail);
-            };
-        },
+        controller: 'productPreviewThumbnailController',
         replace: true
     };
 });

@@ -1,8 +1,9 @@
-describe('Gallery', function () {
-    var $rootScope, $compile, element;
+
+describe('Gallery directive', function () {
+    var $rootScope, $compile, element, $controller, controller;
 
     beforeEach(function () {
-        module("ui-product-preview");
+        module('ui-product-preview');
         module('tpl/preview.html');
         module('tpl/preview-thumbnail.html');
     });
@@ -10,39 +11,28 @@ describe('Gallery', function () {
 
     // Store references to $rootScope and $compile
     // so they are available to all tests in this describe block
-    beforeEach(inject(function (_$compile_, _$rootScope_) {
-        // The injector unwraps the underscores (_) from around the parameter names when matching
-        $compile = _$compile_;
-        $rootScope = _$rootScope_;
+    beforeEach(inject(function(_$compile_, _$rootScope_, _$controller_){
+      // The injector unwraps the underscores (_) from around the parameter names when matching
+      $compile = _$compile_;
+      $rootScope = _$rootScope_;
+      $controller = _$controller_;
     }));
 
 
     it('Replaces the element with the appropriate content', function () {
         // Compile a piece of HTML containing the directive
-        $rootScope = $rootScope.$new();
-        element = '<directive-product-preview></directive-product-preview>';
-        element = $compile(element)($rootScope);
-        console.log($rootScope);
-        // fire all the watches, so the scope expression {{1 + 1}} will be evaluated
+        element = $compile('<product-preview></product-preview>')($rootScope);
         $rootScope.$digest();
         // Check that the compiled element contains the templated content
-        expect(element.html()).toContain("cloud-zoom");
+        expect(element.html()).toContain('cloud-zoom');
     });
 
+    it('Should have an updatePreview function', function(){
+        var $scope = {};
+        /*exported controller */
+        controller = $controller('productPreviewController', {$scope: $scope});
 
-    it("should should have scope object", function () {
-        $rootScope = $rootScope.$new();
-        element = '<directive-product-preview></directive-product-preview>';
-        element = $compile(element)($rootScope);
-
-        $rootScope.$digest();
-
-        expect($rootScope.images.length).toBe(0);
+        expect(typeof $scope.updatePreview).toBe('function');
     });
-
-    it("should change the preview image", function () {
-
-    });
-
 
 });

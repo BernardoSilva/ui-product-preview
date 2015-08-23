@@ -26,7 +26,9 @@ module.exports = function(config) {
 
         // Script files
         'src/uiThumbnailEntity.js',
-        'build/ui-product-preview.min.js',
+        'src/module.js',
+        'src/uiProductPreviewDirective.js',
+        'src/uiProductPreviewThumbnailDirective.js',
 
         'src/tpl/*.html',
         // Test files.

@@ -1,19 +1,17 @@
 /**
  * The directive controller to add behaviour.
  */
-mod.controller('directiveProductPreviewController', function ($scope) {
+angular.module('ui-product-preview').controller('productPreviewController', function ($scope) {
     $scope.updatePreview = function (thumbnail) {
         $scope.selected = thumbnail;
         $scope.previewSrc = thumbnail.smallSrc;
     };
-
-
 });
 
 /**
  * The main product preview directive is here.
  */
-mod.directive('directiveProductPreview', function () {
+angular.module('ui-product-preview').directive('productPreview', function () {
     return {
         scope: {thumbnails: '=images'},
         restrict: 'AE',
@@ -26,8 +24,6 @@ mod.directive('directiveProductPreview', function () {
                 scope.previewSrc = 'images/demo-medium.png';
             }
         },
-        controller: 'directiveProductPreviewController'
+        controller: 'productPreviewController'
     };
 });
-
-

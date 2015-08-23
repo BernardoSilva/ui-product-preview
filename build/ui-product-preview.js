@@ -2,23 +2,22 @@
  * this is the main module definition.
  * @type {*|module}
  */
-var mod = angular.module('ui-product-preview', []);
+angular.module('ui-product-preview', []);
+
 /**
  * The directive controller to add behaviour.
  */
-mod.controller('directiveProductPreviewController', function ($scope) {
+angular.module('ui-product-preview').controller('productPreviewController', function ($scope) {
     $scope.updatePreview = function (thumbnail) {
         $scope.selected = thumbnail;
         $scope.previewSrc = thumbnail.smallSrc;
     };
-
-
 });
 
 /**
  * The main product preview directive is here.
  */
-mod.directive('directiveProductPreview', function () {
+angular.module('ui-product-preview').directive('productPreview', function () {
     return {
         scope: {thumbnails: '=images'},
         restrict: 'AE',
@@ -31,27 +30,30 @@ mod.directive('directiveProductPreview', function () {
                 scope.previewSrc = 'images/demo-medium.png';
             }
         },
-        controller: 'directiveProductPreviewController'
+        controller: 'productPreviewController'
     };
 });
-
-
 
 /**
  * This is the thumbnail directive that adds behaviour to thumbnail elements.
  */
-mod.directive('directiveProductPreviewThumbnail', function () {
+angular.module('ui-product-preview').controller('productPreviewThumbnailController',
+    function ($scope) {
+        $scope.selectImage = function () {
+            $scope.$parent.updatePreview($scope.thumbnail);
+        };
+    }
+);
+
+
+angular.module('ui-product-preview').directive('productPreviewThumbnail', function () {
     return {
-        scope: {thumbnail: "="},
+        scope: {thumbnail: '='},
         restrict: 'AE',
         transcend: true,
-        require: '^directiveProductPreview',
+        require: '^productPreview',
         templateUrl: 'tpl/preview-thumbnail.html',
-        controller: function ($scope) {
-            $scope.selectImage = function () {
-                $scope.$parent.updatePreview($scope.thumbnail);
-            };
-        },
+        controller: 'productPreviewThumbnailController',
         replace: true
     };
 });
